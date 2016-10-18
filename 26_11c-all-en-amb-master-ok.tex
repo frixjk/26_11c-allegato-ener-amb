@@ -1,0 +1,183 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+\documentclass[12pt,twoside,a4paper]{memoir}
+\usepackage{fontspec,xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text}
+\setromanfont[Mapping=tex-text]{TeX Gyre Termes} % va da 12pt
+%\setromanfont[Mapping=tex-text]{TeX Gyre Pagella} % basta 11pt
+%\setromanfont[Mapping=tex-text]{TeX Gyre Schola} 
+%\setromanfont[Mapping=tex-text]{TeX Gyre Bonum} 
+\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{TeX Gyre Adventor}
+%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{TeX Gyre Heros}
+%\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Futura}
+\setmonofont[Scale=MatchLowercase]{Andale Mono}
+%
+\usepackage{polyglossia}
+\setmainlanguage{italian}
+% *********************PACCHETTI******************
+\usepackage{lipsum}
+\usepackage[colorinlistoftodos,italian,textsize=footnotesize,prependcaption]{todonotes}
+\usepackage{paralist}
+\usepackage{enumitem}
+\usepackage[italian]{varioref}  	%pantieri p. 40 
+\usepackage{comment}
+\usepackage[output-decimal-marker={,}]{siunitx} % virgola nei decimali
+\usepackage{color,soul}
+\usepackage{graphicx}
+
+%-----------------------------------
+%----------------ULTIMO PACCHETTO---
+%-----------------------------------
+\usepackage{xcolor}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\usepackage{hyperref}% mi serve che ci sia
+\hypersetup{%
+colorlinks=true,% se = false circonda il testo del link 
+linkcolor=burgundy,% comanda anche l'indice
+%urlbordercolor=1 0 0 
+urlcolor=red,%
+citecolor=green, % colora {in verde} i link attivi
+pdfauthor={arch. Federico Morchio},%
+pdfsubject={regolamento edilizio},%
+pdfkeywords={26_11, regolamento edilizio, allegato energetico-ambientale},%
+}%
+% *************************************
+%\setlength{\parindent}{0em} % no indentazione in memoir
+% **************************************************
+% --------INCLUDE--ONLY--PREAMBLE----------------------
+% --------------------------------------------------
+\includeonly{% non commentare qua ma nel DOCUMENT
+% FRONTMATTER%
+0-frontmatter/0-premessa,% no estensione.tex
+%<percorso file>,%
+%***********************************
+% MAINMATTER
+%===================================
+1-mainmatter/T-1/capitolo,%
+1-mainmatter/T-2/capitolo,%
+% APPENDIX
+%
+% BACKMATTER
+3-backmatter/colophon,%
+}% chiude tutto
+%
+% *************************************
+%*-----------------------------COPERTINA
+% *************************************
+%----------------------------------
+\newcommand*{\plogo}{\fbox{$\mathcal{OA}$}} % logo PROVVISORIO 
+% -----------------------------------
+% COPERTINA - FRONTESPIZIO - TITLE PAGE --
+% -----------------------------------
+\newcommand*{\titleGM}{\begingroup % Create the command for including the title page in the document
+\hbox{ % Horizontal box
+\hspace*{0.2\textwidth} % Whitespace to the left of the title page
+\rule{1pt}{\textheight} % Vertical line
+\hspace*{0.05\textwidth} % Whitespace between the vertical line and title page text
+\parbox[b]{0.75\textwidth}{ % Paragraph box which restricts text to less than the width of the page
+{\noindent\huge\bfseries Comune di Casal Cermelli \\[0.5\baselineskip] \Large{Provincia di Alessandria \\ Regione Piemonte}}\\[5\baselineskip] % Title
+{\Large\textbf{Regolamento Edilizio Comunale}}\\[2\baselineskip] % Tagline or further description
+{\fbox{\Large \textsc{\textcolor{blue}{Allegato Energetico Ambientale }}}} \\[3\baselineskip] % Tagline or further description+ colore by fede
+{\Large \textsc{Regolamento Edilizio Comunale}} \\ 
+
+\textit{Progettista:} \\ arch. Federico Morchio % Author name
+\medskip\\   \raggedright
+
+{\hspace{13em}\rlap{\raisebox{-1.30\baselineskip}[0pt][0pt]{\includegraphics[angle=0]{timbro-ordine.pdf}}}\\
+}
+%\textit{Collaboratori:} \\ arch. Andrea Gamondo 
+\medskip
+
+{15076 Ovada (AL) -  via Gramsci 109 \\ progettazione@oikosatelier.it - (39) 0143.80233 \par} % Editor affiliation
+
+\vspace{0.08\textheight} % Whitespace between the title block and the publisher
+Il resp. del procedimento: geom. Vilmo G. Bovone\\
+
+\vspace{0.12\textheight} % Whitespace between the title block and the publisher
+
+{\noindent oikosatelier \plogo}\date: Settembre 2016\\[\baselineskip] % Publisher and logo
+}}
+\endgroup% 
+}
+%---------------------------
+% FINE COPERTINA
+% --------------------------
+%------------------------------------
+% TOC Style
+%------------------------------------
+\setcounter{tocdepth}{0} % 0 numera PART+Chapter
+%\setcounter{secnumdepth}{3}
+%\setsecnumdepth{subsection} % va inserito se voglio numerate anche le subsections
+
+
+%\setsecnumdepth{subsubsection}
+\addto\captionsitalian{\renewcommand{\partname}{TITOLO}}  
+\addto\captionsitalian{\renewcommand{\chaptername}{Articolo}}  % 
+\renewcommand\cftpartname{\partname~} % "part NAME" nel TOC
+\renewcommand\cftchaptername{\chaptername~} % "CHAPTER NAME" nel TOC
+%
+\setlength{\cftpartnumwidth}{3em} % nel TOC allarga la colonna
+%
+% *********************************************
+% -----------------------INIZIO DOCUMENTO
+% *********************************************
+\begin{document}
+%
+\frenchspacing % OBBLIGATORIO vedi guida guitt beccari
+\tightlists % solo in memoir per restingere spazi nelle liste
+%\firmlists 
+\pagestyle{empty}  	% COPERTINA --- Removes page numbers
+ % per non avere header e footer
+\titleGM % copertina tipo mia
+% -----------------------------
+% STILI DI PAGINA ALTERNATIVI 
+% ----------------------------- 
+%\chapterstyle{madsen}   	% BEI NUMERONI!
+\chapterstyle{lyhne}   		% usalo in caso di titoli lunghi.
+%\chapterstyle{ell}  		% occhio ha solo il numero senza Articolo o Capitolo
+%\chapterstyle{tandh}
+%\makechapterstyle{AlexanderGrebenkov}{%
+%  \renewcommand{\chapterheadstart}{\vspace*{\beforechapskip}\hrule\medskip}
+%  \renewcommand{\chapnamefont}{\normalfont\large\scshape}
+%  \renewcommand{\chapnumfont}{\normalfont\large\scshape}
+%  \renewcommand{\chaptitlefont}{\normalfont\large\scshape}
+%  \renewcommand{\printchaptername}{Articolo}%{\S}
+%  \renewcommand{\chapternamenum}{ }
+%  \renewcommand{\printchapternum}{\chapnumfont \thechapter}
+%  \renewcommand{\afterchapternum}{. }
+%  \renewcommand{\afterchaptertitle}{\par\nobreak\medskip\hrule\vskip
+%\afterchapskip}
+%}
+% -------------------------------------
+% ********************************
+% -----------------------FRONTMATTER
+% ********************************
+%
+\frontmatter
+\include{0-frontmatter/0-premessa} % no estensione .tex
+% *************************************
+% INSERISCO QUA GLI INDICI
+% *************************************
+\textcolor{purple}{\listoftodos} %list of todo colorata
+\clearpage
+\tableofcontents*  % Nb l'asterisco in 'memoir' evita che nell'indice venga scritto anche 'indice' con la relativa pagina.
+\clearpage
+%\listoftables*    % idem come x TOC
+%\newpage
+%\listoffigures*    % idem come x TOC
+%\clearpage
+%
+% ********************************
+% -----------------------FRONTMATTER
+% ********************************
+\mainmatter
+\include{1-mainmatter/T-1/capitolo}%
+%\include{1-mainmatter/T-2/capitolo}%
+% ********************************
+% -----------------------APPENDICE
+% ********************************
+%\appendix
+\backmatter
+\include{3-backmatter/colophon}%
+
+\end{document}
