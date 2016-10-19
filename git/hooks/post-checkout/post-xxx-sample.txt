@@ -1,2 +1,1 @@
-prefixes=”. test 26_11c-all-en-amb” 
 prefixes=”26_11c-all-en-amb-master-ok/T-1/capitolo”
