@@ -1,2 +1,2 @@
 prefixes=”. test docs” 
-prefixes=”/Documents/_LAVORO-iMac-frix/26-casal cermelli/26_11-reg-edilizio/26_11c/26_11-allegato-en-amb/26_11c-allegato-ener-amb-GitHub/26_11c-all-en-amb-master-ok”
+prefixes=”26_11c-allegato-ener-amb-GitHub/26_11c-all-en-amb-master-ok”
