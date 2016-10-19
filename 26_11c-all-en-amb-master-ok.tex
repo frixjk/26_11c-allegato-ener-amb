@@ -2,6 +2,10 @@
 %!TEX encoding = UTF-8 Unicode
 \documentclass[12pt,twoside,a4paper]{memoir}
 \usepackage{fontspec,xltxtra,xunicode}
+\usepackage{polyglossia}
+	\setmainlanguage{italian}
+    \PolyglossiaSetup{italian}{indentfirst=false} % rientra anche il primo capoverso dopo il titolo di sezione
+	
 \defaultfontfeatures{Mapping=tex-text}
 \setromanfont[Mapping=tex-text]{TeX Gyre Termes} % va da 12pt
 %\setromanfont[Mapping=tex-text]{TeX Gyre Pagella} % basta 11pt
@@ -12,10 +16,8 @@
 %\setsansfont[Scale=MatchLowercase,Mapping=tex-text]{Futura}
 \setmonofont[Scale=MatchLowercase]{Andale Mono}
 %
-\usepackage{polyglossia}
-\setmainlanguage{italian}
 % *********************PACCHETTI******************
-\usepackage{lipsum}
+\usepackage{metalogo,lipsum}
 \usepackage[colorinlistoftodos,italian,textsize=footnotesize,prependcaption]{todonotes}
 \usepackage{paralist}
 \usepackage{enumitem}
@@ -24,8 +26,10 @@
 \usepackage[output-decimal-marker={,}]{siunitx} % virgola nei decimali
 \usepackage{color,soul}
 \usepackage{graphicx}
+%-----------------------------------
+% figure
+\usepackage[labelfont={normalsize,bf},font={small,sf}]{caption} % modifico la didascalia delle figure
 
-\usepackage{gitinfo}
 %-----------------------------------
 %----------------ULTIMO PACCHETTO---
 %-----------------------------------
@@ -44,24 +48,6 @@ pdfkeywords={26_11, regolamento edilizio, allegato energetico-ambientale},%
 }%
 % *************************************
 %\setlength{\parindent}{0em} % no indentazione in memoir
-% **************************************************
-% --------INCLUDE--ONLY--PREAMBLE----------------------
-% --------------------------------------------------
-\includeonly{% non commentare qua ma nel DOCUMENT
-% FRONTMATTER%
-0-frontmatter/0-premessa,% no estensione.tex
-%<percorso file>,%
-%***********************************
-% MAINMATTER
-%===================================
-1-mainmatter/T-1/capitolo,%
-1-mainmatter/T-2/capitolo,%
-% APPENDIX
-%
-% BACKMATTER
-3-backmatter/colophon,%
-}% chiude tutto
-%
 % *************************************
 %*-----------------------------COPERTINA
 % *************************************
@@ -109,8 +95,6 @@ Il resp. del procedimento: geom. Vilmo G. Bovone\\
 \setcounter{tocdepth}{0} % 0 numera PART+Chapter
 %\setcounter{secnumdepth}{3}
 %\setsecnumdepth{subsection} % va inserito se voglio numerate anche le subsections
-
-
 %\setsecnumdepth{subsubsection}
 \addto\captionsitalian{\renewcommand{\partname}{TITOLO}}  
 \addto\captionsitalian{\renewcommand{\chaptername}{Articolo}}  % 
@@ -118,6 +102,24 @@ Il resp. del procedimento: geom. Vilmo G. Bovone\\
 \renewcommand\cftchaptername{\chaptername~} % "CHAPTER NAME" nel TOC
 %
 \setlength{\cftpartnumwidth}{3em} % nel TOC allarga la colonna
+%
+% **************************************************
+% --------INCLUDE--ONLY--PREAMBLE----------------------
+% --------------------------------------------------
+\includeonly{% non commentare qua ma nel DOCUMENT
+% FRONTMATTER%
+0-frontmatter/0-premessa,% no estensione.tex
+%<percorso file>,%
+%***********************************
+% MAINMATTER
+%===================================
+1-mainmatter/T-1/capitolo,%
+1-mainmatter/T-2/capitolo,%
+% APPENDIX
+%
+% BACKMATTER
+3-backmatter/colophon,%
+}% chiude tutto
 %
 % *********************************************
 % -----------------------INIZIO DOCUMENTO
@@ -134,22 +136,9 @@ Il resp. del procedimento: geom. Vilmo G. Bovone\\
 % STILI DI PAGINA ALTERNATIVI 
 % ----------------------------- 
 %\chapterstyle{madsen}   	% BEI NUMERONI!
-\chapterstyle{lyhne}   		% usalo in caso di titoli lunghi.
-%\chapterstyle{ell}  		% occhio ha solo il numero senza Articolo o Capitolo
-%\chapterstyle{tandh}
-%\makechapterstyle{AlexanderGrebenkov}{%
-%  \renewcommand{\chapterheadstart}{\vspace*{\beforechapskip}\hrule\medskip}
-%  \renewcommand{\chapnamefont}{\normalfont\large\scshape}
-%  \renewcommand{\chapnumfont}{\normalfont\large\scshape}
-%  \renewcommand{\chaptitlefont}{\normalfont\large\scshape}
-%  \renewcommand{\printchaptername}{Articolo}%{\S}
-%  \renewcommand{\chapternamenum}{ }
-%  \renewcommand{\printchapternum}{\chapnumfont \thechapter}
-%  \renewcommand{\afterchapternum}{. }
-%  \renewcommand{\afterchaptertitle}{\par\nobreak\medskip\hrule\vskip
-%\afterchapskip}
-%}
-% -------------------------------------
+%\chapterstyle{lyhne}   		% usalo in caso di titoli lunghi.
+\chapterstyle{ell}  		% occhio ha solo il numero senza Articolo o Capitolo
+%\chapterstyle{tandh}% 
 % ********************************
 % -----------------------FRONTMATTER
 % ********************************
@@ -159,17 +148,41 @@ Il resp. del procedimento: geom. Vilmo G. Bovone\\
 % *************************************
 % INSERISCO QUA GLI INDICI
 % *************************************
-\textcolor{purple}{\listoftodos} %list of todo colorata
+\renewcommand*\contentsname{Indice del documento} %modifica il nome all'indice
+% \textcolor{purple}{\listoftodos} %list of todo colorata ELENCO COSE DA FARE
+%va disabilitato nella versione finale
 \clearpage
 \tableofcontents*  % Nb l'asterisco in 'memoir' evita che nell'indice venga scritto anche 'indice' con la relativa pagina.
 \clearpage
-%\listoftables*    % idem come x TOC
-%\newpage
-%\listoffigures*    % idem come x TOC
-%\clearpage
+\listoffigures*    % idem come x TOC
+\newpage
+\listoftables*    % idem come x TOC
+\newpage
+% bozza del ----- preso dal collaudo 55_1
 %
+% ho mescolato 3 scenari prefigurati da madsen in 'Page styles on steroids or memoir makes page styling easy"
+\addtopsmarks{headings}{% fede:scenario n.1 di Madsen
+\nouppercaseheads % added at the beginning
+}{%
+  \createmark{subsection}   {right}{shownumber}{}{. \space}
+  \createmark{subsubsection}{right}{shownumber}{}{. \space}
+}
+% use the new settings
+\newcommand\AddRevision{%  scenario n.6 che sarebbe per le revisioni ma posso usare per scrivere anche altro.
+\setlength\unitlength{1mm}
+   \begin{picture}(0,0)
+   \put(0,-7){\footnotesize\itshape\textcolor{purple}{bozza del \today}}
+ \end{picture}}
+ \makeoddfoot{headings} {\AddRevision}{}{}
+ \makeevenfoot{headings}{\AddRevision}{}{}
+ \makeoddfoot{plain}    {\AddRevision}{\thepage}{}
+ \makeevenfoot{plain}   {\AddRevision}{\thepage}{}
+\pagestyle{headings} 
+\makeheadrule{headings}{\textwidth}{\normalrulethickness}%scenario n.7 linea sotto header
+%\pagestyle{headings}
+%%%%%%%%%%%%%%%%%%%%%%%%
 % ********************************
-% -----------------------FRONTMATTER
+% -----------------------MAINMATTER
 % ********************************
 \mainmatter
 \include{1-mainmatter/T-1/capitolo}%
