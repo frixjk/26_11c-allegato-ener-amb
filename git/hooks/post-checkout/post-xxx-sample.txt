@@ -1,2 +1,2 @@
-prefixes=”. test docs” 
+prefixes=”. test 26_11c-all-en-amb-master” 
 prefixes=”26_11c-all-en-amb-master-ok/T-1/capitolo”
