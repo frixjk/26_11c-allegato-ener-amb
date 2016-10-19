@@ -1,2 +1,2 @@
 prefixes=”. test docs” 
-prefixes=”26_11c-allegato-ener-amb-GitHub/26_11c-all-en-amb-master-ok”
+prefixes=”26_11c-all-en-amb-master-ok/T-1/capitolo”
