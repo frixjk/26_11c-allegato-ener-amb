@@ -29,7 +29,18 @@
 %-----------------------------------
 % figure
 \usepackage[labelfont={normalsize,bf},font={small,sf}]{caption} % modifico la didascalia delle figure
-
+%***********************************
+% CROSS-REFERENCES -- P295 MEMman
+% ***********************************
+\renewcommand{\tref}[1]{Tabella \vref{#1}} % ridefinisco \tref (di memoir) per tradurlo in italiano e dirgli di comportarsi come \vref o \ref
+\renewcommand{\fref}[1]{Figura \vref{#1}}
+\renewcommand{\Aref}[1]{Appendice \ref{#1}} 
+\renewcommand{\Cref}[1]{Capitolo \vref{#1}} 
+\renewcommand{\Sref}[1]{Sezione \vref{#1}} 
+\renewcommand{\Pref}[1]{Parte \ref{#1}} 
+% 
+\usepackage{textcomp} % per i gradi
+\usepackage{siunitx}
 %-----------------------------------
 %----------------ULTIMO PACCHETTO---
 %-----------------------------------
@@ -97,7 +108,7 @@ Il resp. del procedimento: geom. Vilmo G. Bovone\\
 %\setsecnumdepth{subsection} % va inserito se voglio numerate anche le subsections
 %\setsecnumdepth{subsubsection}
 \addto\captionsitalian{\renewcommand{\partname}{TITOLO}}  
-\addto\captionsitalian{\renewcommand{\chaptername}{Articolo}}  % 
+%\addto\captionsitalian{\renewcommand{\chaptername}{Articolo}}  % 
 \renewcommand\cftpartname{\partname~} % "part NAME" nel TOC
 \renewcommand\cftchaptername{\chaptername~} % "CHAPTER NAME" nel TOC
 %
@@ -113,13 +124,14 @@ Il resp. del procedimento: geom. Vilmo G. Bovone\\
 %***********************************
 % MAINMATTER
 %===================================
-1-mainmatter/T-1/capitolo,%
-1-mainmatter/T-2/capitolo,%
+1-mainmatter/introduzione,%
+1-mainmatter/geometria-solare,%
 % APPENDIX
 %
 % BACKMATTER
 3-backmatter/colophon,%
 }% chiude tutto
+%
 %
 % *********************************************
 % -----------------------INIZIO DOCUMENTO
@@ -185,8 +197,8 @@ Il resp. del procedimento: geom. Vilmo G. Bovone\\
 % -----------------------MAINMATTER
 % ********************************
 \mainmatter
-\include{1-mainmatter/T-1/capitolo}%
-\include{1-mainmatter/T-2/capitolo}%
+\include{1-mainmatter/introduzione}%
+\include{1-mainmatter/geometria-solare}%
 % ********************************
 % -----------------------APPENDICE
 % ********************************
